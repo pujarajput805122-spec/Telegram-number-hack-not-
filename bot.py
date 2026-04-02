@@ -114,18 +114,21 @@ async def msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id = update.message.chat_id
 
     if not user_step.get(user_id):
-        await update.message.reply_text("❌ PEHLE /start DABAO ❌", parse_mode="Markdown")
+        await update.message.reply_text(
+            "**❌ PEHLE /start DABAO ❌**",
+            parse_mode="Markdown"
+        )
         return
 
     period = update.message.text.strip()
 
     color, size, num = predict(period)
 
-text = (
-        "🔥🎯 FINAL RESULT 🎯🔥\n\n"
-        f"🎨 COLOR: {color}\n"
-        f"📊 SIZE: {size}\n"
-        f"🔢 NUMBER: {num}"
+    text = (
+        "**🔥🎯 FINAL RESULT 🎯🔥**\n\n"
+        f"**🎨 COLOR: {color}**\n"
+        f"**📊 SIZE: {size}**\n"
+        f"**🔢 NUMBER: {num}**"
     )
 
     await update.message.reply_text(text, parse_mode="Markdown")
