@@ -131,7 +131,10 @@ async def msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"**🔢 NUMBER: {num}**"
     )
 
-    await update.message.reply_text(text, parse_mode="Markdown")
+    await update.message.reply_text(
+        text,
+        parse_mode="Markdown"
+    )
 
 # 🚀 MAIN
 app = ApplicationBuilder().token(TOKEN).build()
