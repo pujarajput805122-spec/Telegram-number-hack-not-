@@ -98,21 +98,28 @@ async def result_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def analyze_real_data():
     last_data = history[-15:]
 
-    green = sum(1 for c,s in last_data if "Green" in c)
-    red = sum(1 for c,s in last_data if "Red" in c)
+    green = sum(1 for c, s in last_data if "Green" in c)
+    red = sum(1 for c, s in last_data if "Red" in c)
 
-    big = sum(1 for c,s in last_data if s == "Big")
-    small = sum(1 for c,s in last_data if s == "Small")
+    big = sum(1 for c, s in last_data if s == "Big")
+    small = sum(1 for c, s in last_data if s == "Small")
 
-    color = "Green" if green >= red else "Red"
-    size = "Big" if big >= small else "Small"
+    if green >= red:
+        color = "Green"
+    else:
+        color = "Red"
+
+    if big >= small:
+        size = "Big"
+    else:
+        size = "Small"
 
     if size == "Big":
-        number = random.choice([5,6,7,8,9])
+        number = random.choice([5, 6, 7, 8, 9])
     else:
-        number = random.choice([0,1,2,3,4])
+        number = random.choice([0, 1, 2, 3, 4])
 
-if number in [0,5]:
+    if number in [0, 5]:
         color += " + Violet"
 
     return f"{color} | {size} | Number: {number}"
